@@ -5,9 +5,15 @@ export default function useAddTodo() {
 
   const addTodo = (text) => {
     if (text.trim()) {
-      setTodos([...todos, text]);
+      setTodos([...todos, { text, isEditing: false }]);
     }
   };
 
-  return { todos, addTodo };
+  const updateTodo = (index, newText) => {
+    const updated = [...todos];
+    updated[index].text = newText;
+    setTodos(updated);
+  };
+
+  return { todos, addTodo, updateTodo };
 }

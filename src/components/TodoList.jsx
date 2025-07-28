@@ -1,15 +1,16 @@
 import React from "react";
+import TodoItem from "./TodoItem";
 
-function TodoList({ todos }) {
+function TodoList({ todos, onUpdate }) {
   return (
     <ul className="space-y-2">
       {todos.map((todo, index) => (
-        <li
+        <TodoItem
           key={index}
-          className="p-2 border rounded bg-white shadow-sm hover:bg-gray-50"
-        >
-          {todo}
-        </li>
+          todo={todo}
+          index={index}
+          onUpdate={onUpdate}
+        />
       ))}
     </ul>
   );
